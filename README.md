@@ -1,2 +1,1 @@
-# nvim-config
-frgarciames nvim config
+## frgarciames nvim config
