@@ -10,6 +10,7 @@ return {
         "shfmt",
         "tailwindcss-language-server",
         "typescript-language-server",
+        "kotlin-language-server",
         "css-lsp",
       })
     end,
