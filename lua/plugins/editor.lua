@@ -1,5 +1,4 @@
 return {
-
   {
     "telescope.nvim",
     dependencies = {
@@ -92,6 +91,18 @@ return {
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
+      local neotree = require("neo-tree")
+
+      neotree.setup({
+        window = {
+          mappings = {
+            ["P"] = function(state)
+              local node = state.tree:get_node()
+              require("neo-tree.ui.renderer").focus_node(state, node:get_parent_id())
+            end,
+          },
+        },
+      })
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
         wrap_results = true,
@@ -150,4 +161,15 @@ return {
     "folke/flash.nvim",
     enabled = false,
   },
+  -- {
+  --   "imNel/monorepo.nvim",
+  --   config = function()
+  --     require("monorepo").setup({
+  --       silent = false, -- Supresses vim.notify messages
+  --       autoload_telescope = true, -- Automatically loads the telescope extension at setup
+  --       data_path = vim.fn.stdpath("data"), -- Path that monorepo.json gets saved to
+  --     })
+  --   end,
+  --   dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
+  -- },
 }
